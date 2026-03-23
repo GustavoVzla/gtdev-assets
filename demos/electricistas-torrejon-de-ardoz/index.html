@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electricistas Torrejón de ardoz</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: #171717; background: #FAFAFA; overflow-x: hidden; }
+  a { text-decoration: none; color: inherit; }
+  .nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; padding: 16px 0; transition: all .3s; }
+  .nav.scrolled { background: rgba(255,255,255,.97); box-shadow: 0 1px 12px rgba(0,0,0,.08); }
+  .nav-inner { max-width: 1120px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+  .nav-logo { font-size: 20px; font-weight: 700; color: #fff; transition: color .3s; }
+  .nav.scrolled .nav-logo { color: #171717; }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,.85); font-size: 14px; font-weight: 500; transition: color .3s; }
+  .nav.scrolled .nav-links a { color: #525252; }
+  .nav-links a:hover { color: #2563EB; }
+  .nav-cta { background: #2563EB; color: #fff !important; padding: 8px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; transition: transform .2s, box-shadow .2s; }
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 14px #2563EB66; }
+  .hamburger { display: none; background: none; border: none; cursor: pointer; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: #fff; margin: 5px 0; transition: .3s; }
+  .nav.scrolled .hamburger span { background: #171717; }
+  .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=600&fit=crop&q=80') center/cover no-repeat; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.55); }
+  .hero-content { position: relative; z-index: 2; max-width: 700px; padding: 0 24px; }
+  .hero-badge { display: inline-block; background: rgba(255,255,255,.15); backdrop-filter: blur(8px); color: #fff; font-size: 13px; font-weight: 500; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; }
+  .demo-badge { display: inline-block; background: #2563EB; color: #fff; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; letter-spacing: 1px; }
+  .hero h1 { font-size: clamp(36px, 6vw, 60px); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 20px; }
+  .hero p { font-size: 18px; color: rgba(255,255,255,.8); line-height: 1.6; margin-bottom: 32px; }
+  .btn { display: inline-block; padding: 14px 32px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; transition: all .25s; }
+  .btn-primary { background: #fff; color: #2563EB; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+  .btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.4); margin-left: 12px; }
+  .btn-outline:hover { background: rgba(255,255,255,.1); border-color: #fff; }
+  .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .section { padding: 80px 24px; }
+  .section-inner { max-width: 1120px; margin: 0 auto; }
+  .section-title { font-size: 32px; font-weight: 700; text-align: center; margin-bottom: 12px; }
+  .section-sub { font-size: 16px; color: #525252; text-align: center; margin-bottom: 48px; max-width: 560px; margin-left: auto; margin-right: auto; }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+  .feature-card { background: #fff; border-radius: 12px; padding: 32px; box-shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04); transition: transform .3s, box-shadow .3s; }
+  .feature-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,.1); }
+  .feature-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .feature-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+  .feature-card p { font-size: 14px; color: #525252; line-height: 1.6; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .about-image { width: 100%; aspect-ratio: 4/3; border-radius: 12px; background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=450&fit=crop&q=80') center/cover no-repeat; }
+  .about-text h3 { font-size: 28px; font-weight: 700; margin-bottom: 16px; }
+  .about-text p { font-size: 15px; color: #525252; line-height: 1.7; margin-bottom: 16px; }
+  .about-stats { display: flex; gap: 32px; margin-top: 24px; }
+  .about-stat strong { display: block; font-size: 28px; color: #2563EB; }
+  .about-stat span { font-size: 13px; color: #525252; }
+  .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+  .test-card { background: #fff; border-radius: 12px; padding: 28px; box-shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04); }
+  .test-stars { color: #f59e0b; font-size: 16px; margin-bottom: 12px; }
+  .test-card blockquote { font-size: 15px; color: #525252; line-height: 1.7; font-style: italic; margin-bottom: 16px; }
+  .test-author { display: flex; align-items: center; gap: 12px; }
+  .test-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #2563EB, #7c3aed); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 600; font-size: 14px; }
+  .test-name { font-weight: 600; font-size: 14px; }
+  .test-role { font-size: 12px; color: #525252; }
+  .cta-section { background: #2563EB; color: #fff; padding: 80px 24px; text-align: center; }
+  .cta-section h2 { font-size: 32px; font-weight: 700; margin-bottom: 12px; }
+  .cta-section p { font-size: 16px; opacity: .9; margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .btn-cta { background: #fff; color: #2563EB; padding: 16px 40px; border-radius: 8px; font-size: 16px; font-weight: 700; display: inline-block; transition: transform .2s, box-shadow .2s; }
+  .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+  .footer { background: #171717; color: #fff; padding: 48px 24px 24px; }
+  .footer-inner { max-width: 1120px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; margin-bottom: 32px; }
+  .footer h4 { font-size: 14px; font-weight: 600; margin-bottom: 16px; }
+  .footer p, .footer a { font-size: 13px; color: rgba(255,255,255,.6); line-height: 1.8; }
+  .footer a:hover { color: #fff; }
+  .footer-logo { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-bottom p { font-size: 12px; color: rgba(255,255,255,.4); }
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: block; }
+    .about-grid, .footer-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 32px; }
+    .hero-buttons { flex-direction: column; align-items: center; }
+    .btn-outline { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Electricistas Torrejón de ardoz</a>
+    <ul class="nav-links">
+      <li><a href="#features">Servicios</a></li>
+      <li><a href="#about">Nosotros</a></li>
+      <li><a href="#testimonials">Opiniones</a></li>
+      <li><a href="https://wa.me/34604993451?text=Hola%2C%20he%20visto%20la%20web%20demo%20de%20Electricistas%20Torrej%C3%B3n%20de%20ardoz%20y%20me%20interesa" class="nav-cta" target="_blank">Contactar</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <span class="demo-badge">DEMO GRATUITA</span>
+    <span class="hero-badge">En Madrid, España</span>
+    <h1>Electricistas Torrejón de ardoz</h1>
+    <p>Descubre todo lo que Electricistas Torrejón de ardoz puede ofrecerte. Calidad y servicio profesional en tu zona.</p>
+    <div class="hero-buttons">
+      <a href="https://wa.me/34604993451?text=Hola%2C%20he%20visto%20la%20web%20demo%20de%20Electricistas%20Torrej%C3%B3n%20de%20ardoz%20y%20me%20interesa" class="btn btn-primary" target="_blank">Contactar</a>
+      <a href="#features" class="btn btn-outline">Ver Servicios</a>
+    </div>
+  </div>
+</section>
+<section class="section" id="features">
+  <div class="section-inner">
+    <div class="section-title fade-in">Lo que podemos hacer por ti</div>
+    <div class="section-sub fade-in">Soluciones digitales a medida para potenciar tu negocio</div>
+    <div class="features-grid">
+      <div class="feature-card fade-in">
+        <div class="feature-icon" style="background:#2563EB15;color:#2563EB;font-size:28px;">⭐</div>
+        <h3>Calidad Garantizada</h3>
+        <p>Servicio profesional con la mejor atencion al cliente.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon" style="background:#2563EB15;color:#2563EB;font-size:28px;">📍</div>
+        <h3>Ubicacion Conveniente</h3>
+        <p>Facil acceso en C. Metano, 21 NAVE, 28850 Torrejón de Ardoz, Madrid, España.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon" style="background:#2563EB15;color:#2563EB;font-size:28px;">📱</div>
+        <h3>Contacto Directo</h3>
+        <p>Llamanos o escribenos por WhatsApp para cualquier consulta.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon" style="background:#2563EB15;color:#2563EB;font-size:28px;">❤️</div>
+        <h3>Clientes Satisfechos</h3>
+        <p>Valoracion de 5 estrellas en Google Maps.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="about" style="background:#fff;">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-image fade-in"></div>
+      <div class="about-text fade-in">
+        <h3>Conoce Electricistas Torrejón de ardoz</h3>
+        <p>Un negocio de confianza en tu zona.</p>
+        <p>Nuestro equipo trabaja cada dia para ofrecerte el mejor servicio.</p>
+        <div class="about-stats">
+          <div class="about-stat"><strong>100+</strong><span>Clientes satisfechos</span></div>
+          <div class="about-stat"><strong>5</strong><span>Rating Google</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="testimonials">
+  <div class="section-inner">
+    <div class="section-title fade-in">Lo que dicen los clientes</div>
+    <div class="section-sub fade-in">Opiniones de quienes ya confian en Electricistas Torrejón de ardoz</div>
+    <div class="test-grid">
+      <div class="test-card fade-in">
+        <div class="test-stars">★★★★★</div>
+        <blockquote>"Excelente servicio, muy recomendable."</blockquote>
+        <div class="test-author">
+          <div class="test-avatar">CV</div>
+          <div><div class="test-name">Cliente Verificado</div><div class="test-role">Google Reviews</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cta-section">
+  <h2>Contactanos</h2>
+  <p>Estamos aqui para ayudarte</p>
+  <a href="https://wa.me/34604993451?text=Hola%2C%20he%20visto%20la%20web%20demo%20de%20Electricistas%20Torrej%C3%B3n%20de%20ardoz%20y%20me%20interesa" class="btn-cta" target="_blank">Hablemos por WhatsApp</a>
+</section>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Electricistas Torrejón de ardoz</div>
+        <p>C. Metano, 21 NAVE, 28850 Torrejón de Ardoz, Madrid, España</p>
+        <p>Tel: 644 99 37 64</p>
+        <p><a href="https://maps.google.com/?cid=479604174307103259&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQAhgEIAA" target="_blank">Ver en Google Maps</a></p>
+      </div>
+      <div>
+        <h4>Esta web es tuya</h4>
+        <p>La hemos creado como demo gratuita. Si te interesa tener una web profesional como esta, contactanos sin compromiso.</p>
+      </div>
+      <div>
+        <h4>Creado por</h4>
+        <p><a href="https://gtdevsolutions.com" target="_blank">GT Dev Solutions</a></p>
+        <p><a href="mailto:soluciones@gtdevsolutions.com">soluciones@gtdevsolutions.com</a></p>
+        <p><a href="https://wa.me/34604993451">+34 604 993 451</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Electricistas Torrejón de ardoz. Demo creada por GT Dev Solutions.</p>
+    </div>
+  </div>
+</footer>
+<script>
+  window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50); });
+  const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
