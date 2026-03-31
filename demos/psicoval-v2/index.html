@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psicoval — Centro de Psicología Valencia</title>
+    <meta name="description" content="Centro de Psicología en Valencia, Carabobo. Terapia individual, de pareja, familiar y adolescentes. +10 años de experiencia. Presencial y online.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ========== RESET & BASE ========== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #2d3748;
+            line-height: 1.6;
+            background: #fff;
+            -webkit-font-smoothing: antialiased;
+        }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* ========== VARIABLES ========== */
+        :root {
+            --primary: #4a7c6f;
+            --primary-dark: #3a6359;
+            --primary-light: #e8f0ed;
+            --accent: #c8956c;
+            --accent-light: #fdf5ef;
+            --text: #2d3748;
+            --text-light: #636e7f;
+            --text-muted: #8e99a8;
+            --bg: #ffffff;
+            --bg-soft: #f7f8fa;
+            --bg-warm: #faf9f7;
+            --border: #e8eaed;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.1);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --max-w: 1120px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ========== UTILITIES ========== */
+        .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+        .section { padding: 96px 0; }
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--primary);
+            background: var(--primary-light);
+            padding: 6px 14px;
+            border-radius: 100px;
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            max-width: 560px;
+            line-height: 1.7;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 100px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-primary { background: var(--primary); color: #fff; }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+        .btn-outline { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+        .btn-outline:hover { background: var(--primary-light); }
+        .btn-accent { background: var(--accent); color: #fff; }
+        .btn-accent:hover { background: #b8854f; transform: translateY(-1px); }
+
+        /* ========== DEMO BANNER ========== */
+        .demo-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+            background: linear-gradient(90deg, var(--accent), #d4a078);
+            color: #fff;
+            text-align: center;
+            padding: 10px 24px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        .demo-banner a { color: #fff; text-decoration: underline; font-weight: 700; }
+
+        /* ========== NAV ========== */
+        .nav {
+            position: fixed;
+            top: 36px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .nav-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+        .nav-brand svg { flex-shrink: 0; }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-cta { margin-left: 8px; }
+        .nav-mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            padding-top: 140px;
+            padding-bottom: 80px;
+            background: linear-gradient(135deg, var(--bg-warm) 0%, var(--primary-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+        .hero h1 span { color: var(--primary); }
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 32px;
+            max-width: 480px;
+        }
+        .hero-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+        .hero-stats { display: flex; gap: 40px; }
+        .hero-stat-value {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .hero-stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+        .hero-visual { position: relative; }
+        .hero-image {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+        .hero-image img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+        }
+        .hero-floating-card {
+            position: absolute;
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            padding: 16px 20px;
+        }
+        .hero-floating-card.top-right {
+            top: -16px;
+            right: -16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .hero-floating-card.bottom-left {
+            bottom: -16px;
+            left: -16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .floating-stars { color: #f6b93b; font-size: 0.85rem; letter-spacing: 2px; }
+        .floating-label { font-size: 0.8rem; font-weight: 600; color: var(--text); }
+        .floating-sub { font-size: 0.7rem; color: var(--text-muted); }
+        .online-dot {
+            width: 10px;
+            height: 10px;
+            background: #48bb78;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* ========== SERVICES ========== */
+        .services { background: var(--bg); }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .service-card {
+            background: var(--bg-soft);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+        .service-card:hover {
+            background: #fff;
+            border-color: var(--border);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-4px);
+        }
+        .service-card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .service-card-body { padding: 24px; }
+        .service-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 10px; }
+        .service-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.6; }
+        .service-card .service-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--primary-light);
+            padding: 4px 10px;
+            border-radius: 100px;
+            margin-top: 14px;
+        }
+
+        /* ========== MOTIVOS ========== */
+        .motivos { background: var(--bg-warm); }
+        .motivos-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 40px;
+        }
+        .motivo-tag {
+            background: #fff;
+            border: 1px solid var(--border);
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text);
+            transition: var(--transition);
+        }
+        .motivo-tag:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        /* ========== ABOUT ========== */
+        .about { background: var(--bg); }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+            margin-top: 48px;
+        }
+        .about-image {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+        .about-image img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+        }
+        .about-content {}
+        .about-features { display: flex; flex-direction: column; gap: 24px; margin-bottom: 32px; }
+        .about-feature { display: flex; gap: 16px; }
+        .about-feature-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--primary-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+        .about-feature h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; }
+        .about-feature p { font-size: 0.85rem; color: var(--text-light); line-height: 1.5; }
+        .about-quote {
+            background: var(--bg-soft);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            border-left: 4px solid var(--primary);
+        }
+        .about-quote blockquote {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--text);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+        .about-quote-author { display: flex; align-items: center; gap: 12px; }
+        .about-quote-avatar {
+            width: 44px;
+            height: 44px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        .about-quote-name { font-weight: 600; font-size: 0.9rem; }
+        .about-quote-role { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* ========== MODALIDADES ========== */
+        .modalidades { background: var(--bg-soft); }
+        .modalidades-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .modalidad-card {
+            background: #fff;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .modalidad-card:hover { box-shadow: var(--shadow-md); }
+        .modalidad-card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .modalidad-card-body { padding: 32px; }
+        .modalidad-card h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 10px; }
+        .modalidad-card p { font-size: 0.9rem; color: var(--text-light); line-height: 1.6; margin-bottom: 16px; }
+        .modalidad-features { display: flex; flex-direction: column; gap: 8px; }
+        .modalidad-features li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text);
+        }
+        .modalidad-features li svg { color: var(--primary); flex-shrink: 0; }
+
+        /* ========== REVIEWS ========== */
+        .reviews { background: var(--bg-warm); }
+        .reviews-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 48px;
+        }
+        .reviews-score { display: flex; align-items: center; gap: 16px; }
+        .reviews-score-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .reviews-score-stars { color: #f6b93b; font-size: 1.1rem; letter-spacing: 2px; }
+        .reviews-score-label { font-size: 0.85rem; color: var(--text-muted); }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .review-card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 28px;
+            border: 1px solid var(--border);
+        }
+        .review-stars { color: #f6b93b; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 12px; }
+        .review-text { font-size: 0.9rem; color: var(--text); line-height: 1.6; margin-bottom: 16px; font-style: italic; }
+        .review-author { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+
+        /* ========== LOCATION ========== */
+        .location { background: var(--bg); }
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+            margin-top: 48px;
+        }
+        .location-info { display: flex; flex-direction: column; gap: 24px; }
+        .location-item { display: flex; gap: 16px; }
+        .location-item-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--primary-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .location-item h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
+        .location-item p { font-size: 0.85rem; color: var(--text-light); line-height: 1.5; }
+        .location-map {
+            background: var(--bg-soft);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            height: 320px;
+        }
+        .location-map iframe { width: 100%; height: 100%; border: 0; }
+
+        /* ========== CTA ========== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 80px 0;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1499209974431-9dddcece7f88?w=1400&q=80') center/cover;
+            opacity: 0.1;
+        }
+        .cta-section .container { position: relative; z-index: 1; }
+        .cta-section .section-title { color: #fff; margin-bottom: 16px; }
+        .cta-section p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            max-width: 500px;
+            margin: 0 auto 32px;
+            line-height: 1.7;
+        }
+        .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .btn-white { background: #fff; color: var(--primary); }
+        .btn-white:hover { background: #f0f0f0; transform: translateY(-1px); }
+        .btn-ghost {
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        .btn-ghost:hover { background: rgba(255,255,255,0.25); }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--text);
+            color: rgba(255,255,255,0.7);
+            padding: 48px 0 32px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 40px;
+        }
+        .footer-brand { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
+        .footer-desc { font-size: 0.85rem; line-height: 1.6; max-width: 320px; }
+        .footer h4 { color: #fff; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px; }
+        .footer-links { display: flex; flex-direction: column; gap: 10px; }
+        .footer-links a { font-size: 0.85rem; transition: var(--transition); }
+        .footer-links a:hover { color: #fff; }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+        .footer-demo-badge {
+            background: rgba(255,255,255,0.1);
+            padding: 6px 14px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* ========== CHATBOT ========== */
+        .chatbot-trigger {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            z-index: 999;
+            border: none;
+        }
+        .chatbot-trigger:hover { background: var(--primary-dark); transform: scale(1.05); }
+        .chatbot-trigger svg { color: #fff; }
+        .chatbot-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 18px;
+            height: 18px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.6rem;
+            color: #fff;
+            font-weight: 700;
+        }
+        .chatbot-window {
+            position: fixed;
+            bottom: 96px;
+            right: 24px;
+            width: 380px;
+            max-height: 520px;
+            background: #fff;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 12px 48px rgba(0,0,0,0.15);
+            z-index: 1002;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            animation: chatbot-in 0.3s ease;
+        }
+        .chatbot-window.active { display: flex; }
+        @keyframes chatbot-in {
+            from { opacity: 0; transform: translateY(16px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .chatbot-header { background: var(--primary); color: #fff; padding: 20px 24px; }
+        .chatbot-header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+        .chatbot-header h3 { font-size: 1rem; font-weight: 600; }
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.7);
+            cursor: pointer;
+            padding: 4px;
+        }
+        .chatbot-close:hover { color: #fff; }
+        .chatbot-header p { font-size: 0.8rem; opacity: 0.8; }
+        .chatbot-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 320px;
+        }
+        .chat-msg {
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-size: 0.88rem;
+            line-height: 1.5;
+            animation: msg-in 0.3s ease;
+        }
+        @keyframes msg-in {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .chat-msg.bot {
+            background: var(--bg-soft);
+            color: var(--text);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+        .chat-msg.user {
+            background: var(--primary);
+            color: #fff;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+        .chat-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-self: flex-start;
+            max-width: 85%;
+        }
+        .chat-option {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 10px 16px;
+            font-size: 0.82rem;
+            font-family: inherit;
+            color: var(--primary);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: left;
+        }
+        .chat-option:hover {
+            background: var(--primary-light);
+            border-color: var(--primary);
+        }
+        .chatbot-input {
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .chatbot-input input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-family: inherit;
+            font-size: 0.88rem;
+            color: var(--text);
+        }
+        .chatbot-input input::placeholder { color: var(--text-muted); }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .section { padding: 64px 0; }
+            .nav-links { display: none; }
+            .nav-mobile-toggle { display: block; }
+            .hero-grid,
+            .about-grid,
+            .modalidades-grid,
+            .location-grid { grid-template-columns: 1fr; gap: 32px; }
+            .hero { padding-top: 112px; }
+            .hero-stats { gap: 24px; }
+            .hero-floating-card { display: none; }
+            .hero-image img { height: 320px; }
+            .about-image img { height: 360px; }
+            .reviews-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; gap: 12px; }
+            .chatbot-window { width: calc(100% - 32px); right: 16px; bottom: 88px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- DEMO BANNER -->
+    <div class="demo-banner">
+        Esta es una demo personalizada creada por <a href="https://gtdevsolutions.com" target="_blank">GT Dev Solutions</a> para Psicoval
+    </div>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-brand">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect width="32" height="32" rx="8" fill="#4a7c6f"/>
+                    <path d="M10 22V12a6 6 0 0 1 12 0v2a4 4 0 0 1-4 4h-2" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="22" r="2" fill="#fff"/>
+                </svg>
+                Psicoval
+            </a>
+            <div class="nav-links">
+                <a href="#servicios">Servicios</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#modalidades">Modalidades</a>
+                <a href="#opiniones">Opiniones</a>
+                <a href="#ubicación">Ubicación</a>
+                <a href="#contacto" class="btn btn-primary nav-cta" style="padding: 10px 20px; font-size: 0.85rem; color: #fff;">Agendar Cita</a>
+            </div>
+            <button class="nav-mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')" aria-label="Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2d3748" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <div class="hero-badge">
+                        <span class="floating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        5 estrellas en Google
+                    </div>
+                    <h1>Tu bienestar emocional comienza con el <span>primer paso</span></h1>
+                    <p class="hero-desc">Centro de Psicología en Valencia, Carabobo. Atención personalizada para adultos, adolescentes y parejas. Más de 10 años ayudándote a construir una vida plena y estable.</p>
+                    <div class="hero-buttons">
+                        <a href="#contacto" class="btn btn-primary">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            Agendar Cita
+                        </a>
+                        <a href="#servicios" class="btn btn-outline">Ver Servicios</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div>
+                            <div class="hero-stat-value">+10</div>
+                            <div class="hero-stat-label">Años de experiencia</div>
+                        </div>
+                        <div>
+                            <div class="hero-stat-value">5.0</div>
+                            <div class="hero-stat-label">Rating Google Maps</div>
+                        </div>
+                        <div>
+                            <div class="hero-stat-value">2</div>
+                            <div class="hero-stat-label">Modalidades de atención</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=800&q=80" alt="Sesión de terapia profesional">
+                        <div class="hero-floating-card top-right">
+                            <div>
+                                <div class="floating-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                                <div class="floating-label">Google Maps</div>
+                            </div>
+                        </div>
+                        <div class="hero-floating-card bottom-left">
+                            <span class="online-dot"></span>
+                            <div>
+                                <div class="floating-label">Disponible Online</div>
+                                <div class="floating-sub">Videollamada WhatsApp</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="servicios" class="section services">
+        <div class="container">
+            <span class="section-label">Servicios</span>
+            <h2 class="section-title">Atención profesional para cada etapa de tu vida</h2>
+            <p class="section-subtitle">Ofrecemos un espacio seguro y confidencial donde puedes trabajar en tu bienestar emocional con el acompañamiento de profesionales especializados.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img class="service-card-img" src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=600&q=80" alt="Terapia individual">
+                    <div class="service-card-body">
+                        <h3>Psicología Individual</h3>
+                        <p>Sesiones personalizadas para trabajar ansiedad, depresión, autoestima, duelo y otros desafíos emocionales que afectan tu día a día.</p>
+                        <span class="service-tag">Adultos</span>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img class="service-card-img" src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&q=80" alt="Terapia de pareja">
+                    <div class="service-card-body">
+                        <h3>Terapia de Pareja</h3>
+                        <p>Mejora la comúnicación, resuelve conflictos y fortalece el vinculo afectivo. Un espacio neutral para ambos miembros de la relación.</p>
+                        <span class="service-tag">Parejas</span>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img class="service-card-img" src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&q=80" alt="Terapia familiar">
+                    <div class="service-card-body">
+                        <h3>Terapia Familiar</h3>
+                        <p>Trabaja las dinámicas familiares, mejora las relaciónes entre miembros y encuentra herramientas para resolver conflictos en el hogar.</p>
+                        <span class="service-tag">Familias</span>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img class="service-card-img" src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=600&q=80" alt="Psicologia adolescente">
+                    <div class="service-card-body">
+                        <h3>Psicología Adolescente</h3>
+                        <p>Atención especializada para jóvenes a partir de 10 años. Acompañamiento en una etapa clave del desarrollo emocional y social.</p>
+                        <span class="service-tag">Desde 10 años</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MOTIVOS DE CONSULTA -->
+    <section class="section motivos">
+        <div class="container">
+            <span class="section-label">Motivos de consulta</span>
+            <h2 class="section-title">No tienes que enfrentarlo solo</h2>
+            <p class="section-subtitle">Estos son algunos de los motivos más frecuentes por los que nuestros pacientes buscan ayuda. Si te identificas con alguno, estamos aquí para ayudarte.</p>
+            <div class="motivos-grid">
+                <span class="motivo-tag">Ansiedad</span>
+                <span class="motivo-tag">Depresión</span>
+                <span class="motivo-tag">Duelo</span>
+                <span class="motivo-tag">Baja autoestima</span>
+                <span class="motivo-tag">Apego ansioso</span>
+                <span class="motivo-tag">Problemas de comúnicación</span>
+                <span class="motivo-tag">Situacion de pareja</span>
+                <span class="motivo-tag">Sentido de vida</span>
+                <span class="motivo-tag">Habilidades sociales</span>
+                <span class="motivo-tag">Toma de decisiones</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="nosotros" class="section about">
+        <div class="container">
+            <span class="section-label">Nosotros</span>
+            <h2 class="section-title">Más de una década dedicada a tu bienestar</h2>
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80" alt="Psicóloga profesional en consultorio">
+                </div>
+                <div class="about-content">
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a7c6f" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <div>
+                                <h4>+10 años de experiencia clínica</h4>
+                                <p>Trayectoria comprobada atendiendo niños, adolescentes y adultos en terapia individual y de pareja.</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a7c6f" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                            <div>
+                                <h4>Especialista en patrones afectivos</h4>
+                                <p>Enfoque en analizar los patrones que te impiden sentirte bien y brindarte herramientas emocionales concretas.</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a7c6f" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            </div>
+                            <div>
+                                <h4>Psicólogas colegiadas</h4>
+                                <p>Profesionales registradas en la Federación de Psicólogos del Estado Carabobo. Licenciadas de la Universidad Arturo Michelena.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-quote">
+                        <blockquote>"Me especializo en analizar los patrones afectivos que te impiden sentirte bien y te brindo las herramientas emocionales que necesitas para consolidar una vida plena y estable."</blockquote>
+                        <div class="about-quote-author">
+                            <div class="about-quote-avatar">GL</div>
+                            <div>
+                                <div class="about-quote-name">Giselle Llovera Da Corte</div>
+                                <div class="about-quote-role">Psicóloga Clínica — Cofundadora</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODALIDADES -->
+    <section id="modalidades" class="section modalidades">
+        <div class="container">
+            <span class="section-label">Modalidades</span>
+            <h2 class="section-title">Elige como quieres recibir tu atención</h2>
+            <p class="section-subtitle">Nos adaptamos a tus necesidades. Ambas modalidades ofrecen la misma calidad de atención profesional.</p>
+            <div class="modalidades-grid">
+                <div class="modalidad-card">
+                    <img class="modalidad-card-img" src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=800&q=80" alt="Consultorio presencial">
+                    <div class="modalidad-card-body">
+                        <h3>Presencial</h3>
+                        <p>Atención en nuestro consultorio en Valencia, en un espacio cómodo, privado y diseñado para tu bienestar.</p>
+                        <ul class="modalidad-features">
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4a7c6f" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                C.C. Reda Building, Valencia
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4a7c6f" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                Lunes a Viernes, 8:00am - 7:00pm
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4a7c6f" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                Ambiente seguro y confidencial
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modalidad-card">
+                    <img class="modalidad-card-img" src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?w=800&q=80" alt="Terapia online por videollamada">
+                    <div class="modalidad-card-body">
+                        <h3>Online</h3>
+                        <p>Sesiones por videollamada de WhatsApp desde la comodidad de tu hogar. Ideal si estas fuera de Valencia o prefieres atención remota.</p>
+                        <ul class="modalidad-features">
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4a7c6f" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                Via WhatsApp videollamada
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4a7c6f" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                Desde cualquier lugar
+                            </li>
+                            <li>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4a7c6f" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                                Misma calidad profesional
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="opiniones" class="section reviews">
+        <div class="container">
+            <div class="reviews-header">
+                <div>
+                    <span class="section-label">Opiniones</span>
+                    <h2 class="section-title">Lo que dicen nuestros pacientes</h2>
+                </div>
+                <div class="reviews-score">
+                    <div class="reviews-score-number">5.0</div>
+                    <div>
+                        <div class="reviews-score-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                        <div class="reviews-score-label">en Google Maps</div>
+                    </div>
+                </div>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"Excelente atención. Me ayudaron a entender mis patrones de ansiedad y ahora tengo herramientas concretas para mi día a día. Muy recomendado."</p>
+                    <div class="review-author">Paciente verificado — Google Maps</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"La terapia de pareja con Psicoval fue transformadora. Aprendimos a comúnicarnos de verdad. El espacio es muy acogedor y profesional."</p>
+                    <div class="review-author">Paciente verificado — Google Maps</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <p class="review-text">"Llevo mi hija adolescente y ha sido un cambio increíble. La psicóloga conecta muy bien con los jóvenes. 100% recomendado para padres."</p>
+                    <div class="review-author">Paciente verificado — Google Maps</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section id="ubicación" class="section location">
+        <div class="container">
+            <span class="section-label">Ubicación</span>
+            <h2 class="section-title">Visítanos en Valencia</h2>
+            <div class="location-grid">
+                <div class="location-info">
+                    <div class="location-item">
+                        <div class="location-item-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a7c6f" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <h4>Dirección</h4>
+                            <p>C.C. Reda Building<br>Valencia, Carabobo, Venezuela</p>
+                        </div>
+                    </div>
+                    <div class="location-item">
+                        <div class="location-item-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a7c6f" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div>
+                            <h4>Horario</h4>
+                            <p>Lunes a Viernes<br>8:00 AM — 7:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="location-item">
+                        <div class="location-item-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a7c6f" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Contacto</h4>
+                            <p>WhatsApp — Escribe para más información<br>soluciones@gtdevsolutions.com</p>
+                        </div>
+                    </div>
+                    <div class="location-item">
+                        <div class="location-item-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4a7c6f" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </div>
+                        <div>
+                            <h4>Redes Sociales</h4>
+                            <p>Síguenos en Instagram y LinkedIn para contenido sobre bienestar emocional</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="location-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3926.5!2d-67.99!3d10.18!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDEwJzQ4LjAiTiA2N8KwNTknMjQuMCJX!5e0!3m2!1ses!2sve!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contacto" class="section cta-section">
+        <div class="container">
+            <h2 class="section-title">Da el primer paso hacia tu bienestar</h2>
+            <p>Agenda una cita hoy. Presencial en Valencia o por videollamada, estamos aquí para ayudarte.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/34604993451?text=Hola%20Gustavo,%20vi%20la%20demo%20de%20Psicoval%20y%20me%20gustaria%20saber%20mas" target="_blank" class="btn btn-white">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Escribir por WhatsApp
+                </a>
+                <a href="mailto:soluciones@gtdevsolutions.com" class="btn btn-ghost">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Enviar Email
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">Psicoval</div>
+                    <p class="footer-desc">Centro de Psicología en Valencia, Carabobo. Más de 10 años ayudando a personas, parejas y familias a construir una vida emocional plena y estable.</p>
+                </div>
+                <div>
+                    <h4>Servicios</h4>
+                    <div class="footer-links">
+                        <a href="#servicios">Psicología Individual</a>
+                        <a href="#servicios">Terapia de Pareja</a>
+                        <a href="#servicios">Terapia Familiar</a>
+                        <a href="#servicios">Psicología Adolescente</a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Contacto</h4>
+                    <div class="footer-links">
+                        <a href="#ubicación">C.C. Reda Building, Valencia</a>
+                        <a href="mailto:soluciones@gtdevsolutions.com">soluciones@gtdevsolutions.com</a>
+                        <a href="#contacto">Agendar Cita</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Psicoval. Centro de Psicología Valencia. Todos los derechos reservados.</span>
+                <span class="footer-demo-badge">Demo creada por GT Dev Solutions</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CHATBOT -->
+    <button class="chatbot-trigger" id="chatbotTrigger" aria-label="Abrir chat">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span class="chatbot-badge">1</span>
+    </button>
+
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <div class="chatbot-header-top">
+                <h3>Asistente Psicoval</h3>
+                <button class="chatbot-close" id="chatbotClose" aria-label="Cerrar chat">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <p>Respuestas inmediatas, 24/7</p>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages"></div>
+        <div class="chatbot-input">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8e99a8" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <input type="text" placeholder="Escribe tu pregunta..." id="chatbotInput">
+        </div>
+    </div>
+
+    <script>
+        // ========== CHATBOT LOGIC ==========
+        const trigger = document.getElementById('chatbotTrigger');
+        const chatWindow = document.getElementById('chatbotWindow');
+        const closeBtn = document.getElementById('chatbotClose');
+        const messagesEl = document.getElementById('chatbotMessages');
+        const inputEl = document.getElementById('chatbotInput');
+
+        let chatOpen = false;
+        let chatStarted = false;
+
+        const KB = {
+            servicios: {
+                keywords: ['servicio', 'ofrecen', 'terapia', 'atienden', 'consulta', 'tratamiento'],
+                response: 'En Psicoval ofrecemos:\n\n' +
+                    '&bull; <strong>Psicología Individual</strong> — adultos\n' +
+                    '&bull; <strong>Psicología Adolescente</strong> — desde 10 años\n' +
+                    '&bull; <strong>Terapia de Pareja</strong>\n' +
+                    '&bull; <strong>Terapia Familiar</strong>\n\n' +
+                    'Todas las sesiones son con psicologas colegiadas con +10 años de experiencia.'
+            },
+            horario: {
+                keywords: ['horario', 'hora', 'atienden', 'abierto', 'cuando', 'disponible', 'dias'],
+                response: 'Nuestro horario es:\n\n<strong>Lunes a Viernes</strong>\n8:00 AM — 7:00 PM\n\nPara agendar tu cita, escríbenos por WhatsApp y te confirmamos disponibilidad.'
+            },
+            ubicación: {
+                keywords: ['donde', 'ubicación', 'direccion', 'llegar', 'queda', 'consultorio', 'lugar'],
+                response: 'Estamos ubicados en:\n\n<strong>C.C. Reda Building</strong>\nValencia, Carabobo, Venezuela\n\nTambién ofrecemos atención <strong>online por videollamada</strong> de WhatsApp si prefieres sesiones desde casa.'
+            },
+            online: {
+                keywords: ['online', 'virtual', 'distancia', 'videollamada', 'remoto', 'casa'],
+                response: 'Si, ofrecemos atención <strong>100% online</strong> por videollamada de WhatsApp.\n\nEs ideal si estas fuera de Valencia o prefieres sesiones desde casa. La calidad de atención es la misma que presencial.'
+            },
+            precio: {
+                keywords: ['precio', 'costo', 'cuanto', 'cobran', 'tarifa', 'valor', 'pago'],
+                response: 'Los precios varían según el tipo de consulta. Para información detallada sobre tarifas, te invitamos a escribirnos directamente por WhatsApp.\n\nAhí te damos toda la información personalizada.'
+            },
+            cita: {
+                keywords: ['cita', 'agendar', 'reservar', 'turno', 'appointment'],
+                response: 'Para agendar tu cita, escribenos por WhatsApp indicando:\n\n&bull; Tipo de consulta (individual, pareja, familiar, adolescente)\n&bull; Modalidad preferida (presencial u online)\n&bull; Horarios disponibles\n\nTe confirmamos a la brevedad.'
+            },
+            ansiedad: {
+                keywords: ['ansiedad', 'ansioso', 'nervio', 'panico', 'angustia', 'estres'],
+                response: 'La ansiedad es uno de los motivos de consulta más frecuentes en Psicoval. Nuestra especialista tiene amplia experiencia en:\n\n&bull; Trastornos de ansiedad\n&bull; Apego ansioso\n&bull; Manejo del estrés\n\nSi sientes que la ansiedad afecta tu día a día, dar el primer paso es lo más importante.'
+            },
+            depresión: {
+                keywords: ['depresión', 'deprimido', 'triste', 'vacio', 'sin ganas'],
+                response: 'La depresión es tratable y buscar ayuda profesional es un acto de valentía. En Psicoval trabajamos con:\n\n&bull; Depresión clínica\n&bull; Duelo\n&bull; Pérdida de sentido de vida\n&bull; Baja autoestima\n\nNo tienes que enfrentarlo solo. Estamos aquí para ayudarte.'
+            }
+        };
+
+        function matchTopic(text) {
+            text = text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            let bestMatch = null;
+            let bestScore = 0;
+            for (const [topic, data] of Object.entries(KB)) {
+                const score = data.keywords.filter(kw => text.includes(kw)).length;
+                if (score > bestScore) { bestScore = score; bestMatch = topic; }
+            }
+            return bestMatch;
+        }
+
+        function addMessage(html, type) {
+            const div = document.createElement('div');
+            div.className = `chat-msg ${type}`;
+            div.innerHTML = html;
+            messagesEl.appendChild(div);
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
+
+        function addOptions(options) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'chat-options';
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'chat-option';
+                btn.textContent = opt.label;
+                btn.addEventListener('click', () => {
+                    wrapper.remove();
+                    addMessage(opt.label, 'user');
+                    setTimeout(() => {
+                        addMessage(opt.response, 'bot');
+                        setTimeout(() => {
+                            addMessage('¿Hay algo más en lo que pueda ayudarte?', 'bot');
+                            setTimeout(() => addOptions(mainOptions), 400);
+                        }, 600);
+                    }, 500);
+                });
+                wrapper.appendChild(btn);
+            });
+            messagesEl.appendChild(wrapper);
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
+
+        const mainOptions = [
+            { label: 'Servicios que ofrecen', response: KB.servicios.response },
+            { label: 'Horarios de atención', response: KB.horario.response },
+            { label: 'Ubicación del consultorio', response: KB.ubicación.response },
+            { label: 'Atención online', response: KB.online.response },
+            { label: 'Agendar una cita', response: KB.cita.response },
+            { label: 'Precios', response: KB.precio.response }
+        ];
+
+        function startChat() {
+            if (chatStarted) return;
+            chatStarted = true;
+            addMessage('Hola, bienvenido a <strong>Psicoval</strong>. Soy el asistente virtual. ¿En que puedo ayudarte?', 'bot');
+            setTimeout(() => addOptions(mainOptions), 500);
+        }
+
+        function handleInput() {
+            const text = inputEl.value.trim();
+            if (!text) return;
+            inputEl.value = '';
+            addMessage(text, 'user');
+            setTimeout(() => {
+                const topic = matchTopic(text);
+                if (topic) {
+                    addMessage(KB[topic].response, 'bot');
+                } else {
+                    addMessage('Entiendo tu consulta. Para darte una respuesta más personalizada, te invito a escribirnos por WhatsApp donde una de nuestras psicólogas te atenderá directamente.', 'bot');
+                }
+                setTimeout(() => addOptions(mainOptions), 600);
+            }, 600);
+        }
+
+        trigger.addEventListener('click', () => {
+            chatOpen = !chatOpen;
+            chatWindow.classList.toggle('active', chatOpen);
+            trigger.querySelector('.chatbot-badge').style.display = chatOpen ? 'none' : 'flex';
+            if (chatOpen) startChat();
+        });
+
+        closeBtn.addEventListener('click', () => {
+            chatOpen = false;
+            chatWindow.classList.remove('active');
+        });
+
+        inputEl.addEventListener('keydown', e => { if (e.key === 'Enter') handleInput(); });
+
+        // ========== SMOOTH NAV SCROLL ==========
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+            });
+        });
+
+        // ========== NAV SHADOW ON SCROLL ==========
+        const nav = document.querySelector('.nav');
+        window.addEventListener('scroll', () => {
+            nav.style.boxShadow = window.scrollY > 20 ? '0 2px 12px rgba(0,0,0,0.06)' : 'none';
+        });
+    </script>
+
+</body>
+</html>
