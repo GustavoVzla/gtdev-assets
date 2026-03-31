@@ -101,7 +101,7 @@
             top: 0;
             left: 0;
             right: 0;
-            z-index: 1001;
+            z-index: 1100;
             background: linear-gradient(90deg, var(--accent), #d4a078);
             color: #fff;
             text-align: center;
@@ -117,7 +117,7 @@
             top: 36px;
             left: 0;
             right: 0;
-            z-index: 1000;
+            z-index: 1100;
             background: rgba(255,255,255,0.95);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
@@ -605,7 +605,7 @@
             background: #fff;
             border-radius: var(--radius-lg);
             box-shadow: 0 12px 48px rgba(0,0,0,0.15);
-            z-index: 1002;
+            z-index: 1200;
             display: none;
             flex-direction: column;
             overflow: hidden;
@@ -710,7 +710,22 @@
         /* ========== RESPONSIVE ========== */
         @media (max-width: 768px) {
             .section { padding: 64px 0; }
-            .nav-links { display: none; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: #fff;
+                padding: 24px;
+                gap: 16px;
+                box-shadow: var(--shadow-md);
+                border-bottom: 1px solid var(--border);
+            }
+            .nav-links.mobile-open { display: flex; }
+            .nav-links a { font-size: 1rem; }
+            .nav-cta { margin-left: 0; width: 100%; text-align: center; justify-content: center; }
             .nav-mobile-toggle { display: block; }
             .hero-grid,
             .about-grid,
